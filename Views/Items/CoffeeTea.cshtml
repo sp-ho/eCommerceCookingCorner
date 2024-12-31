@@ -1,0 +1,138 @@
+﻿@model IEnumerable<ShoppingCart.Models.Item>
+
+@{
+    ViewData["Title"] = "Pans";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    .alert-success {
+        position: relative;
+        padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0.75rem;
+        padding: 0;
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        color: #000;
+        opacity: 0.5;
+    }
+
+        .close:hover {
+            color: #000;
+            opacity: 1;
+        }
+
+    .item {
+        text-align: center;
+        height: 250px;
+        border: none;
+    }
+
+        .item img {
+            border: none;
+            max-width: 100%;
+            height: auto;
+        }
+
+    .item-name {
+        font-weight: bold;
+    }
+
+    .item-price {
+        color: #007bff;
+    }
+
+    .add-to-cart-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-input {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .add-to-cart-button {
+        flex: 1;
+    }
+
+    .admin-actions {
+        margin-top: 10px;
+    }
+
+    .btn-cart {
+        background-color: white;
+        border: 1px solid grey;
+        border-radius: 15px;
+    }
+</style>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<h1>Coffee & Tea</h1>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New Item</a>
+    </p>
+}
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <img class="item" src="@item.ImageUrl" alt="@item.Name" />
+                    <div class="card-body">
+                        <p class="card-text item-name">@Html.DisplayFor(modelItem => item.Name)</p>
+                        <p class="card-text item-price">$@Html.DisplayFor(modelItem => item.Price)</p>
+                        @if (!User.IsInRole("Admin"))
+                        {
+                            <form asp-action="AddToCart" asp-controller="Carts" method="post">
+                                <input type="hidden" name="itemId" value="@item.Id" />
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="number" name="quantity" class="form-control" min="0" />
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-cart">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="admin-actions">
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

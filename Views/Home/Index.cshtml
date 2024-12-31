@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <!-- Add your favorite fonts and other stylesheets here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .header h1 {
+                color: #333333;
+                font-size: 3em;
+                margin-bottom: 20px;
+            }
+
+            .header p {
+                color: #666666;
+                font-size: 1.5em;
+            }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px auto;
+        }
+
+        .product-card {
+            width: 300px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+        }
+
+            .product-card img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .product-card h3 {
+                color: #333333;
+                font-size: 1.5em;
+                margin-top: 20px;
+            }
+
+            .product-card p {
+                color: #666666;
+            }
+    </style>
+</head>
+<body>
+    <div >
+        @* <h1>Welcome to CookCrafts</h1>
+        <p>Discover the finest collection of kitchen tools and accessories for your culinary adventures.</p> *@
+        <img src="https://cdn.sanity.io/images/fr9flhkd/main/40cdfc9ab8f63563e05d752ac437b0f3d49cf1fd-2560x1440.jpg?fm=webp&q=75&w=1280" alt="cookware" style="width: 100%; height: auto;" />
+    </div>
+
+    <div class="product-container">
+        <div class="product-card">
+            <img src="https://media.istockphoto.com/id/1313643282/photo/woman-is-preparing-a-healthy-detox-drink-in-a-blender-a-green-smoothie-with-fresh-fruits.jpg?s=612x612&w=0&k=20&c=uhBGHx8QFZVTfyC7a97G992g2Q0oDu725BoKiYKaHXM=" alt="Product 1">
+            <p>A stylish and functional kitchen gadget to simplify your cooking experience.</p>
+        </div>
+        <div class="product-card">
+            <img src="https://media.istockphoto.com/id/1300212146/photo/homemade-healthy-chicken-burrito-bowl.jpg?s=612x612&w=0&k=20&c=IYNxJJU-fuZgmVhzauujV2Kt3S215HUua5RD7jwv6y8=" alt="Product 2">
+            <p>Explore our extensive range of high-quality kitchen accessories designed to elevate your dining experience.</p>
+        </div>
+        <div class="product-card">
+            <img src="https://media.istockphoto.com/id/476392316/photo/kitchen-utensil.jpg?s=612x612&w=0&k=20&c=Mb2d_7WGJP6N5Jb__soAl74ZUhFwH47iSdJtXeoW47o=" alt="Product 3">
+            <p>Elevate your culinary experience with our premium and comprehensive kitchen utensil set.</p>
+        </div>
+    </div>
+
+</body>
+</html>
