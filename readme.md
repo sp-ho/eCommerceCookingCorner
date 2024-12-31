@@ -26,6 +26,20 @@ Live application: [Cooks Corner](https://coookingcorner-hgdtfjepg4anfpfh.canadac
 
 ---
 
+## Try the App with a Seed User
+
+To explore the app, use the following pre-configured accounts:
+
+### Admin Account
+- **Email**: `admin@cookscorner.com`
+- **Password**: `Abcd@123`
+
+### Customer Account
+- **Email**: `jack@email.com`
+- **Password**: `Jack@1234`
+
+---
+
 ## Prerequisites
 
 - **.NET SDK 8.0** or higher.
